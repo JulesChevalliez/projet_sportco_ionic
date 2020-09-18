@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="search-offer"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Recherche d'offres...</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+    <ion-list>
+        <ion-list-header>
+            Résultats recherche offres :
+        </ion-list-header>
+        <div *ngIf="offers.length; else elseBlock">
+            <div *ngFor="let offer of offers">
+
+                <ion-item (click)="goToPageDetails(offer.id)" detail>
+
+                    <ion-thumbnail slot="start">
+                        <img src="https://nicolasfabing.fr/ionic/imagesClub/{{offer.img}}" alt="img"
+                             style="max-height: auto; width: auto">
+                    </ion-thumbnail>
+
+                    <ion-label>
+                        <h2>{{offer.name}}</h2>
+                        <h3>Poste : {{offer.poste}}</h3>
+                        <p>A partir du : {{offer.availability}}</p>
+
+                    </ion-label>
+
+                </ion-item>
+
+            </div>
+        </div>
+        <ng-template #elseBlock><h2 class="ion-text-center">Aucune Offre trouvée !</h2></ng-template>
+    </ion-list>
+
+</ion-content>

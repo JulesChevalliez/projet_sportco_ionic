@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Mes Favoris</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+    <ion-list>
+        <ion-list-header>
+            Favoris
+        </ion-list-header>
+        <div *ngIf="favorites.length; else elseBlock">
+            <div *ngFor="let favorite of favorites">
+
+                <ion-item (click)="goToPageDetails(favorite.id)" detail>
+
+                    <ion-thumbnail slot="start">
+                        <img src="https://nicolasfabing.fr/ionic/imagesClub/{{favorite.img}}" alt="img"
+                             style="max-height: auto; width: auto">
+                    </ion-thumbnail>
+
+                    <ion-label>
+                        <h2>{{favorite.name}}</h2>
+                        <h3>Poste : {{favorite.poste}}</h3>
+                        <p>A partir du : {{favorite.availability}}</p>
+
+                    </ion-label>
+
+                </ion-item>
+
+            </div>
+        </div>
+        <ng-template #elseBlock ><h2 class="ion-text-center">Aucun Favoris !</h2></ng-template>
+    </ion-list>
+
+</ion-content>
